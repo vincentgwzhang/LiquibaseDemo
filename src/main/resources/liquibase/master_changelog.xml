@@ -1,0 +1,27 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1.0" author="bohan">
+        <sql>
+            CREATE TABLE `deparment` (
+                                         `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+                                         `name` varchar(100) COLLATE utf8mb4_bin DEFAULT NULL,
+                                         PRIMARY KEY (`id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+        </sql>
+        <rollback>
+            DROP TABLE deparment;
+        </rollback>
+    </changeSet>
+
+
+    <changeSet id="1.1" author="bohan">
+        <sql>
+            insert into deparment values(1, "test");
+        </sql>
+        <rollback>
+            DELETE FROM deparment WHERE id = 1;
+        </rollback>
+    </changeSet>
+</databaseChangeLog>
